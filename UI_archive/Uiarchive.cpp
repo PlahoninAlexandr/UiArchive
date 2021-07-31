@@ -9,7 +9,7 @@
 
 #include <ArchiveFunction.h>
 
-HWND hWnd1, hWnd2, hWnd3, hWnd4, hWnd5, file_butt, dir_butt, add_butt, select_archive, do_archive, select_file, draw_butt,
+HWND hWnd1, hWnd2, hWnd3, hWnd4, hWnd5, file_butt, dir_butt, add_butt, extract_butt, select_archive, do_archive, select_file, draw_butt,
 slct, drop, mode_butt, diagram1, diagram2;
 int number, context_flag = 0;
 string tmp_path;
@@ -122,12 +122,16 @@ int WINAPI WinMain(_In_ HINSTANCE hInstance, _In_opt_ HINSTANCE hPrevInstance, _
     SendMessage(add_butt, WM_SETFONT, (LPARAM)GetStockObject(DEFAULT_GUI_FONT), true);
 
     mode_butt = CreateWindow(L"button", L"Mode", WS_CHILD | WS_VISIBLE | BS_PUSHBUTTON,
-        65, 115, 100, 30, hWnd1, (HMENU)10, hInstance, NULL);
+        15, 115, 100, 30, hWnd1, (HMENU)10, hInstance, NULL);
     SendMessage(mode_butt, WM_SETFONT, (LPARAM)GetStockObject(DEFAULT_GUI_FONT), true); 
     
     draw_butt = CreateWindow(L"button", L"Draw", WS_CHILD | WS_VISIBLE | BS_PUSHBUTTON,
-        175, 115, 100, 30, hWnd1, (HMENU)7, hInstance, NULL);
+        120, 115, 100, 30, hWnd1, (HMENU)7, hInstance, NULL);
     SendMessage(draw_butt, WM_SETFONT, (LPARAM)GetStockObject(DEFAULT_GUI_FONT), true);
+
+    extract_butt = CreateWindow(L"button", L"Extract", WS_CHILD | WS_VISIBLE | BS_PUSHBUTTON,
+        225, 115, 100, 30, hWnd1, (HMENU)13, hInstance, NULL);
+    SendMessage(extract_butt, WM_SETFONT, (LPARAM)GetStockObject(DEFAULT_GUI_FONT), true);
 
     
 
@@ -324,6 +328,7 @@ LRESULT CALLBACK WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam) 
             context_diagram->setParameters(hWnd, str, global_archive, number, hWnd3, hWnd1);
             EnableWindow(hWnd1, true);
             ShowWindow(hWnd5, SW_HIDE);
+
             break;
 
         case 12:
@@ -331,7 +336,11 @@ LRESULT CALLBACK WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam) 
             context_diagram->setParameters(hWnd, str, global_archive, number, hWnd3, hWnd1);
             EnableWindow(hWnd1, true);
             ShowWindow(hWnd5, SW_HIDE);
+
             break;
+
+        case 13:
+            archive->extractArchive(hWnd, str, path, outname);
         }
         case WM_PAINT:
             hdc = BeginPaint(hWnd1, &ps);
