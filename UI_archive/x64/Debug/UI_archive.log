@@ -1,1 +1,6 @@
-﻿  UI_archive.vcxproj -> C:\Users\Mi Notebook\Desktop\UI_archive\x64\Debug\UI_archive.exe
+﻿  Uiarchive.cpp
+C:\Users\Mi Notebook\Desktop\UI_archive\UI_archive\Uiarchive.cpp(350,44): warning C4267: 'argument': conversion from 'size_t' to 'int', possible loss of data
+C:\Users\Mi Notebook\Desktop\UI_archive\UI_archive\Uiarchive.cpp(358,44): warning C4267: 'argument': conversion from 'size_t' to 'int', possible loss of data
+C:\Users\Mi Notebook\Desktop\UI_archive\UI_archive\Uiarchive.cpp(368,44): warning C4267: 'argument': conversion from 'size_t' to 'int', possible loss of data
+C:\Users\Mi Notebook\Desktop\UI_archive\UI_archive\Uiarchive.cpp(376,44): warning C4267: 'argument': conversion from 'size_t' to 'int', possible loss of data
+  UI_archive.vcxproj -> C:\Users\Mi Notebook\Desktop\UI_archive\x64\Debug\UI_archive.exe

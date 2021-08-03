@@ -224,14 +224,14 @@ LRESULT CALLBACK WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam) 
 
     switch (message) {
     case WM_DROPFILES:
-        if (context_flag == 1) context_file->dropLogic(wParam, hWnd, str, path, argv, outname);
+        if (context_flag == 1) context_file->dropLogic(wParam, str, path, argv, outname);
 
         break;
 
     case WM_COMMAND:
         switch (LOWORD(wParam)) {
         case 1:     // Single file
-            if (context_flag == 0) context_file->dropLogic(wParam, hWnd, str, path, argv, outname);
+            if (context_flag == 0) context_file->dropLogic(wParam, str, path, argv, outname);
 
             break;
 
@@ -261,12 +261,12 @@ LRESULT CALLBACK WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam) 
             break;
 
         case 4:     // Add file::Select file
-            archive->selectFile(hWnd, str);
+            archive->selectFile(str);
 
             break;
 
         case 5:     // Add file::Select archive
-            archive->selectArchive(hWnd, str);
+            archive->selectArchive(str);
 
             break;
 
@@ -340,7 +340,7 @@ LRESULT CALLBACK WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam) 
             break;
 
         case 13:
-            archive->extractArchive(hWnd, str, path, outname);
+            archive->extractArchive(str, path, outname);
         }
         case WM_PAINT:
             hdc = BeginPaint(hWnd1, &ps);
@@ -393,7 +393,11 @@ LRESULT CALLBACK SubWndProc(HWND hwnd, UINT Message, WPARAM wParam, LPARAM lPara
     switch (Message)
     {
     case WM_CLOSE:
-        archive->close(hWnd2, hWnd1);
+        SetWindowPos(hWnd2, HWND_NOTOPMOST, 0, 0, 0, 0, NULL);
+        ShowWindow(hWnd2, SW_HIDE);
+        EnableWindow(hWnd1, TRUE);
+        SetWindowPos(hWnd1, HWND_TOPMOST, 0, 0, 0, 0, SWP_NOSIZE | SWP_NOMOVE);
+
         break;
     case WM_DESTROY:
         PostQuitMessage(0);
@@ -407,7 +411,11 @@ LRESULT CALLBACK ThrWndProc(HWND hwnd, UINT Message, WPARAM wParam, LPARAM lPara
     switch (Message)
     {
     case WM_CLOSE:
-        archive->close(hWnd3, hWnd1);
+        SetWindowPos(hWnd3, HWND_NOTOPMOST, 0, 0, 0, 0, NULL);
+        ShowWindow(hWnd3, SW_HIDE);
+        EnableWindow(hWnd1, TRUE);
+        SetWindowPos(hWnd1, HWND_TOPMOST, 0, 0, 0, 0, SWP_NOSIZE | SWP_NOMOVE);
+
         break;
     case WM_DESTROY:
         PostQuitMessage(0);
@@ -421,7 +429,11 @@ LRESULT CALLBACK FourWndProc(HWND hwnd, UINT Message, WPARAM wParam, LPARAM lPar
     switch (Message)
     {
     case WM_CLOSE:
-        archive->close(hWnd4, hWnd1);
+        SetWindowPos(hWnd4, HWND_NOTOPMOST, 0, 0, 0, 0, NULL);
+        ShowWindow(hWnd4, SW_HIDE);
+        EnableWindow(hWnd1, TRUE);
+        SetWindowPos(hWnd1, HWND_TOPMOST, 0, 0, 0, 0, SWP_NOSIZE | SWP_NOMOVE);
+
         break;
     case WM_DESTROY:
         PostQuitMessage(0);
@@ -435,7 +447,11 @@ LRESULT CALLBACK FiveWndProc(HWND hwnd, UINT Message, WPARAM wParam, LPARAM lPar
     switch (Message)
     {
     case WM_CLOSE:
-        archive->close(hWnd5, hWnd1);
+        SetWindowPos(hWnd5, HWND_NOTOPMOST, 0, 0, 0, 0, NULL);
+        ShowWindow(hWnd5, SW_HIDE);
+        EnableWindow(hWnd1, TRUE);
+        SetWindowPos(hWnd1, HWND_TOPMOST, 0, 0, 0, 0, SWP_NOSIZE | SWP_NOMOVE);
+
         break;
     case WM_DESTROY:
         PostQuitMessage(0);

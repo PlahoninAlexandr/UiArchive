@@ -15,5 +15,5 @@ class DropFile : public StrategyFile {
     void readArchive(const string path);
     string lastWordDirectory(string word);
 public:
-    void DoAlgorithm(WPARAM wParam, HWND hWnd, wstring str, string path, vector<string> argv, string outname) override;
+    void DoAlgorithm(WPARAM wParam, wstring str, string path, vector<string> argv, string outname) override;
 };

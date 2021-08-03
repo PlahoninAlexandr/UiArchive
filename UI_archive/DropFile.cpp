@@ -27,7 +27,7 @@ string DropFile::lastWordFile(string word) {
     return vec[vec.size() - 1];
 }
 
-void DropFile::DoAlgorithm(WPARAM wParam, HWND hWnd, wstring str, string path, vector<string> argv, string outname) {
+void DropFile::DoAlgorithm(WPARAM wParam, wstring str, string path, vector<string> argv, string outname) {
     Flag = 0;
     size = MAX_PATH;
     p_filename = new wchar_t[size];

@@ -9,6 +9,6 @@ void ContextFile::set_strategy(StrategyFile* strategy) {
 	this->strategy_ = strategy;
 }
 
-void ContextFile::dropLogic(WPARAM wParam, HWND hWnd, wstring str, string path, vector<string> argv, string outname) {
-	this->strategy_->DoAlgorithm(wParam, hWnd, str, path, argv, outname);
+void ContextFile::dropLogic(WPARAM wParam, wstring str, string path, vector<string> argv, string outname) {
+	this->strategy_->DoAlgorithm(wParam, str, path, argv, outname);
 }
