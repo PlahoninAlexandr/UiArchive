@@ -4,9 +4,12 @@
 
 class ContextFile {
     StrategyFile* strategy_;
+    wstring str;
+    string path, outname;
+    vector<string> argv;
 public:
     ContextFile(StrategyFile* strategy = nullptr);
     ~ContextFile();
     void set_strategy(StrategyFile* strategy);
-    void dropLogic(WPARAM wParam, wstring str, string path, vector<string> argv, string outname);
+    void dropLogic(WPARAM wParam);
 };

@@ -11,6 +11,7 @@ class DiagramArchive : public StrategyDiagram {
 	int lft = 70, rht = 50;
 	wchar_t file[1024];
 	OPENFILENAME ofn;
+	wstring str;
 
 	vector<pair<float, string>>sizeFiles(const string path, int& count, float &sizeArch);
 	void ratio(float max, vector<float> vec, vector<int>& hg);

@@ -217,26 +217,24 @@ LRESULT CALLBACK WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam) 
 
     RECT r;
 
-    string global_path, global_archive, path, outname;
-    wstring str;
-    vector<string> argv;
+    string global_path, global_archive;
 
 
     switch (message) {
     case WM_DROPFILES:
-        if (context_flag == 1) context_file->dropLogic(wParam, str, path, argv, outname);
+        if (context_flag == 1) context_file->dropLogic(wParam);
 
         break;
 
     case WM_COMMAND:
         switch (LOWORD(wParam)) {
         case 1:     // Single file
-            if (context_flag == 0) context_file->dropLogic(wParam, str, path, argv, outname);
+            if (context_flag == 0) context_file->dropLogic(wParam);
 
             break;
 
         case 2:     // Directory
-            archive->writeArchiveDirectory(str, path, argv, outname);
+            archive->writeArchiveDirectory();
 
             break;
 
@@ -261,12 +259,12 @@ LRESULT CALLBACK WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam) 
             break;
 
         case 4:     // Add file::Select file
-            archive->selectFile(str);
+            archive->selectFile();
 
             break;
 
         case 5:     // Add file::Select archive
-            archive->selectArchive(str);
+            archive->selectArchive();
 
             break;
 
@@ -325,7 +323,7 @@ LRESULT CALLBACK WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam) 
 
         case 11:
             context_diagram->set_strategy(new DiagramArchive);
-            context_diagram->setParameters(hWnd, str, global_archive, number, hWnd3, hWnd1);
+            context_diagram->setParameters(hWnd, global_archive, number, hWnd3, hWnd1);
             EnableWindow(hWnd1, true);
             ShowWindow(hWnd5, SW_HIDE);
 
@@ -333,14 +331,14 @@ LRESULT CALLBACK WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam) 
 
         case 12:
             context_diagram->set_strategy(new DiagramFile);
-            context_diagram->setParameters(hWnd, str, global_archive, number, hWnd3, hWnd1);
+            context_diagram->setParameters(hWnd, global_archive, number, hWnd3, hWnd1);
             EnableWindow(hWnd1, true);
             ShowWindow(hWnd5, SW_HIDE);
 
             break;
 
         case 13:
-            archive->extractArchive(str, path, outname);
+            archive->extractArchive();
         }
         case WM_PAINT:
             hdc = BeginPaint(hWnd1, &ps);

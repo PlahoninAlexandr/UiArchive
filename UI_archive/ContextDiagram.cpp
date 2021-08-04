@@ -13,6 +13,6 @@ void ContextDiagram::draw(HDC hdc, HWND hWnd, PAINTSTRUCT ps, RECT& r, HFONT hFo
 	this->strategy_->DoDraw(hdc, hWnd, ps, r, hFont, number);
 }
 
-void ContextDiagram::setParameters(HWND hWnd, wstring str, string global_archive, int& number, HWND hWnd1, HWND hWnd2) {
+void ContextDiagram::setParameters(HWND hWnd, string global_archive, int& number, HWND hWnd1, HWND hWnd2) {
 	this->strategy_->DoParameters(hWnd, str, global_archive, number, hWnd1, hWnd2);
 }

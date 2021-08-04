@@ -5,5 +5,5 @@
 class StrategyFile {
 public:
     virtual ~StrategyFile() {}
-    virtual void DoAlgorithm(WPARAM wParam, wstring str, string path, vector<string> argv, string outname) = 0;
+    virtual void DoAlgorithm(WPARAM wParam) = 0;
 };

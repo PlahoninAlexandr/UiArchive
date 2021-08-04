@@ -8,6 +8,9 @@ class DropFile : public StrategyFile {
     wchar_t* p_filename;
     wchar_t file[1024];
     OPENFILENAME ofn;
+    wstring str;
+    string path, outname;
+    vector<string> argv;
 
     void saveFile();
     void write_archive(const string outname_tmp, const vector<string> filename);
@@ -15,5 +18,5 @@ class DropFile : public StrategyFile {
     void readArchive(const string path);
     string lastWordDirectory(string word);
 public:
-    void DoAlgorithm(WPARAM wParam, wstring str, string path, vector<string> argv, string outname) override;
+    void DoAlgorithm(WPARAM wParam) override;
 };
