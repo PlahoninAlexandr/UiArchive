@@ -1,1 +1,1 @@
-Архиватор разработан с использованием winapi на базе библиотеки libarchive. Логика архиватора вынесена в статическую библиотеку(репозиторий Archive_Static_Library)
+The archiver is developed using winapi based on the libarchive library. The archiver logic has been moved to a static library (Archive_Static_Library repository)
